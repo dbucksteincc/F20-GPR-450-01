@@ -81,6 +81,21 @@ void a3animation_update(a3_DemoState* demoState, a3_DemoMode1_Animation* demoMod
 			activeCamera->projectionMat.m, activeCameraObject->modelMat.m, activeCameraObject->modelMatInv.m,
 			demoMode->object_scene[i].modelMat.m, a3mat4_identity.m);
 	}
+
+
+	// ANIMATION
+	//	1) interpolate -> between deltas/key
+	//	2) concatenate -> current delta with base
+	//	3) convert -> base to local-space
+	//	4) FK -> local-space to object-space
+	// why all this?
+	//	-> matrices!
+
+	// e.g. striking T-pose
+	//	1) step interp set of identity poses
+	//	2) concat identity poses with base
+	//	3) convert normally
+	//	4) FK normally
 }
 
 
