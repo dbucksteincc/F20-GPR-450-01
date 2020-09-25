@@ -35,6 +35,7 @@ inline a3i32 a3spatialPoseSetRotation(a3_SpatialPose* spatialPose, const a3f32 r
 {
 	if (spatialPose)
 	{
+		// orientation ->	validate(o_lhs + o_rhs)
 
 	}
 	return -1;
@@ -114,7 +115,7 @@ inline a3i32 a3spatialPoseConcat(a3_SpatialPose* spatialPose_out,
 	if (spatialPose_out && spatialPose_lhs && spatialPose_rhs)
 	{
 		// how do they concat?
-		// orientation ->	o_lhs + o_rhs
+		// orientation ->	validate(o_lhs + o_rhs)
 		// scale ->			s_lhs * s_rhs (component-wise)
 		// translation ->	t_lhs + t_rhs
 
