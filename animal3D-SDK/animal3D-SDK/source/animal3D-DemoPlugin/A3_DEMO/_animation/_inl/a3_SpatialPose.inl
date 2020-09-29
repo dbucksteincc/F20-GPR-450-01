@@ -86,6 +86,17 @@ inline a3i32 a3spatialPoseConvert(a3mat4* mat_out, const a3_SpatialPose* spatial
 	if (mat_out && spatialPose_in)
 	{
 		// slides!
+
+		// translate matrix
+		// scale matrix
+		// rotate matrix
+		//	-> e.g. xyz: R(x) * R(y) * R(z) (actual occurrence is right to left)
+		// final = T * R * S
+
+		// quaternions
+		//	-> angle-axis
+		//	-> euler
+		// final = T * convert(Q) * S
 	}
 	return -1;
 }
@@ -110,12 +121,21 @@ inline a3i32 a3spatialPoseCopy(a3_SpatialPose* spatialPose_out, const a3_Spatial
 
 // concat
 inline a3i32 a3spatialPoseConcat(a3_SpatialPose* spatialPose_out,
-								const a3_SpatialPose* spatialPose_lhs, const a3_SpatialPose* spatialPose_rhs)
+								const a3_SpatialPose* spatialPose_lhs, const a3_SpatialPose* spatialPose_rhs,
+								const a3boolean usingQuaternions)
 {
 	if (spatialPose_out && spatialPose_lhs && spatialPose_rhs)
 	{
 		// how do they concat?
-		// orientation ->	validate(o_lhs + o_rhs)
+		if (usingQuaternions)
+		{
+			// orientation ->	o_lhs * o_rhs
+		}
+		else
+		{
+			// orientation ->	validate(o_lhs + o_rhs)
+		}
+
 		// scale ->			s_lhs * s_rhs (component-wise)
 		// translation ->	t_lhs + t_rhs
 
@@ -136,6 +156,14 @@ inline a3i32 a3spatialPoseLerp(a3_SpatialPose* spatialPose_out,
 		// orientation ->	lerp(o0, o1, u)
 		// scale ->			lerp(s0, s1, u)
 		// translation ->	lerp(t0, t1, u)
+
+		// quaternion: 
+		// orientation	->	lerp(o0, o1, u)	-> just another 4D vector :)
+		//						|q| < 1		-> s = |q|^2
+		//				->	nlerp(...)
+		//						|q| = 1
+		//				->	slerp(...)
+		//						|q| = 1
 
 		// done
 		return 1;
