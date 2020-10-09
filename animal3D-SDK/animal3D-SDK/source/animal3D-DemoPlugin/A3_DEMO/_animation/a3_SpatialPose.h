@@ -100,6 +100,7 @@ enum a3_SpatialPoseChannel
 struct a3_SpatialPose
 {
 	a3mat4 transform;
+	a3vec4 rotation, scale, translation;
 };
 
 
