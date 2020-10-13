@@ -100,7 +100,20 @@ enum a3_SpatialPoseChannel
 struct a3_SpatialPose
 {
 	a3mat4 transform;
+	a3vec4 orientation;
 	a3vec4 rotation, scale, translation;
+};
+
+
+typedef a3real4r(*a3real4BlendOpLerp)(a3real4 p_out, a3real4 const p0, a3real4 const p1, a3real const u);
+
+// blend operations collection for a whole pose
+struct a3_SpatialPoseBlend
+{
+	a3real4BlendOpLerp blendOpLerp_orientation;
+	a3real4BlendOpLerp blendOpLerp_rotation;
+	a3real4BlendOpLerp blendOpLerp_scale;
+	a3real4BlendOpLerp blendOpLerp_translation;
 };
 
 

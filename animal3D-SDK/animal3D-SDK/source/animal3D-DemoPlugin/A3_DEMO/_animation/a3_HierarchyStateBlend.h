@@ -47,14 +47,26 @@ a3_SpatialPose* a3spatialPoseOpIdentity(a3_SpatialPose* pose_out);
 // pointer-based LERP operation for single spatial pose
 a3_SpatialPose* a3spatialPoseOpLERP(a3_SpatialPose* pose_out, a3_SpatialPose const* pose0, a3_SpatialPose const* pose1, a3real const u);
 
+// const
+a3_SpatialPose* a3spatialPoseOpConst(a3_SpatialPose* pose_inout);
+
+// copy
+a3_SpatialPose* a3spatialPoseOpCopy(a3_SpatialPose* pose_out, a3_SpatialPose const* pose_in);
+
 
 //-----------------------------------------------------------------------------
 
 // data-based reset/identity
-a3_SpatialPose a3spatialPoseDOpIdentity();
+a3_SpatialPose const a3spatialPoseDOpIdentity();
 
 // data-based LERP
-a3_SpatialPose a3spatialPoseDOpLERP(a3_SpatialPose const pose0, a3_SpatialPose const pose1, a3real const u);
+a3_SpatialPose const a3spatialPoseDOpLERP(a3_SpatialPose const pose0, a3_SpatialPose const pose1, a3real const u);
+
+// const
+//a3_SpatialPose& a3spatialPoseOpConst(a3_SpatialPose& pose_inout);
+
+// copy
+//a3_SpatialPose const a3spatialPoseDOpCopy(a3_SpatialPose const pose_in);
 
 
 //-----------------------------------------------------------------------------
@@ -71,6 +83,9 @@ a3_HierarchyPose* a3hierarchyPoseOpLERP(a3_HierarchyPose* pose_out, a3size const
 
 #ifdef __cplusplus
 }
+
+// C++ versions/operators
+
 #endif	// __cplusplus
 
 
